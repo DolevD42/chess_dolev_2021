@@ -1,15 +1,23 @@
 #pragma once
 #include "stdafx.h"
 #include <iostream>
+#include <vector>
+
+
 class Board
 {
+private:
+	std::vector<std::vector<Piece*>> board;
+	bool turn;
 public:
-	Piece** board;//board[][] doesnt work
-	bool* arrayChess;
-	bool* arrayTurn;
-	Board(const std::string& startingBoard);
+	Board();
 	~Board();
-	//std::string getBoardString(); didnt understand why we need get when we initilize it on the constructor
+	std::string getBoardString() const;
+	Piece* getSpecificPiece(int const x, int const y);
+	bool getTurn() const;
+	void changeTurn();
 	void printBoard() const;
-	//check for check didnt done
+	bool checkForCheck(bool const whoToCheck, int const xSrc, int const ySrc, int const xDst,int const yDst);
+
+	
 };

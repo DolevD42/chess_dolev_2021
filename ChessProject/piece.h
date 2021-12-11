@@ -6,13 +6,18 @@
 class Piece
 {
 protected:
-	int color; //0  white 1 black  #insted of using the  color color that i dont have
+	bool color;
 	int xAxis;
 	int yAxis;
-	//char symbol; // can be used if we want insted of type()
+	char symbol;
 public:
 	Piece(const int x, const int y, const int color);
 	~Piece();
-	virtual std::string movePiece(std::string STmovDS, Board& board) = 0;//we can use this function as int not string because we return the int of the error and not ther error itself
-	virtual std::string* CheckMovesValidation(Board& board) = 0;//didnt understand why we return bool how can we understand what kind of error is this
+	virtual std::string movePiece(std::string STmovDS, Board& board) = 0;
+	virtual std::string CheckMovesValidation(std::string STmovDS, Board& board) = 0;
+	char getSymbol() const;
+	int getX() const;
+	int getY() const;
+	void setPose(int x, int y);
+	bool getColor() const;
 };
