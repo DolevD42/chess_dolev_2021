@@ -1,8 +1,13 @@
 #pragma once
 #include "stdafx.h"
+#include "piece.h"
+#include "Rook.h"
+#include "King.h"
+class piece;
 #include <iostream>
 #include <vector>
 
+#define BOARD_SIZE 8
 
 class Board
 {
