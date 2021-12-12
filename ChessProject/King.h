@@ -1,9 +1,9 @@
 #pragma once
 #include "piece.h"
-class Rook : public Piece
+class King : public Piece
 {
 public:
-	Rook(const int x, const int y, const int color);
-	~Rook();
+	King(const int x, const int y, const int color);
+	~King();
 	std::string movePiece(std::string mov, Board& board);
 };
