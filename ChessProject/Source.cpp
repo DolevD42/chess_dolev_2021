@@ -59,7 +59,7 @@ void main()
 		}
 		
 	}
-
+	
 	/*
 	srand(time_t(NULL));
 
@@ -137,6 +137,6 @@ void main()
 		// get message from graphics
 		msgFromGraphics = p.getMessageFromGraphics();
 	}
-
-	p.close(); */
+	
+	p.close();*/
 }
