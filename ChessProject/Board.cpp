@@ -6,27 +6,14 @@ Board::Board()
 	int j = 0;
 	for (i = 0; i < BOARD_SIZE; i++)
 	{
-		std::vector<Piece*> v1;
+		std::vector<Piece*> v1; 
 		for (j = 0; j < BOARD_SIZE; j++)
 		{
-			v1.push_back(NULL);
+			v1.push_back(NULL); //initializing the board with Null
 		}
 		bd.push_back(v1);
 	}
 	this->board = bd;
-	/*Rook rookW1 = Rook(0, 0, true);
-	board[0][0] = &rookW1;
-	Rook rookW2 = Rook(0, 7, true);
-	board[0][7] = &rookW2;
-	Rook rookB1 = Rook(7, 0, false);
-	board[7][0] = &rookB1;
-	Rook rookB2 = Rook(7, 7, false);
-	board[7][7] = &rookB2;*/
-
-	/*King kingW = King(0, 3, true);
-	board[0][3] = &kingW;
-	King kingB = King(7, 3, false);
-	board[7][3] = &kingB; */
 	turn = true;
 }
 
@@ -74,7 +61,7 @@ std::string Board::getBoardString() const
 			}
 			else
 			{
-				boardString += "#";
+				boardString += "#"; //# is the symbol for null
 			}
 		}
 	}
@@ -90,7 +77,7 @@ void Board::printBoard() const
 	{
 		for (j = 0; j < BOARD_SIZE; j++)
 		{
-			std::cout << boardStr[j+i*BOARD_SIZE];
+			std::cout << boardStr[j+i*BOARD_SIZE]; //print the specific panel
 			std::cout << " ";
 		}
 		std::cout << std::endl;
@@ -109,10 +96,11 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 	{
 		for (j = 0; j < BOARD_SIZE; j++)
 		{
-			if (board[i][j])
+			if (board[i][j]) //find a not empty panel
 			{
-				if (board[i][j]->getColor() != whoToCheck)
+				if (board[i][j]->getColor() != whoToCheck) //check if the panel is the oppsite color
 				{
+					//place for more tools to check
 					if (board[i][j]->getSymbol() == 'R' || board[i][j]->getSymbol() == 'r')
 					{
 						int k = 0;
@@ -183,11 +171,11 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 								{ // if its not the king
 									continue;
 								}
-								if ((i + x) >= BOARD_SIZE || (i + x) < 0 || (j + y) >= BOARD_SIZE || (j + y) < 0)
+								if ((i + x) >= BOARD_SIZE || (i + x) < 0 || (j + y) >= BOARD_SIZE || (j + y) < 0) //check that the number don't overflowd
 								{
 									continue;
 								}
-								else if (board[i+x][j+y])
+								else if (board[i+x][j+y]) 
 								{
 									if (board[i + x][j + y]->getColor() == whoToCheck && (board[i + x][j + y]->getSymbol() == 'k' || board[i + x][j + y]->getSymbol() == 'K'))
 									{
@@ -237,13 +225,13 @@ std::string Board::movePieceOnBoard(std::string mov)
 
 		return "2";
 	}
-	std::string returnString = board[srcX][srcY]->CheckMovesValidation(srcX, srcY, dstX, dstY, *this);
+	std::string returnString = board[srcX][srcY]->CheckMovesValidation(srcX, srcY, dstX, dstY, *this); //check the first few things
 	if (returnString[0] != 'n')
 	{
 		return returnString;
 	}
 
-	if (!board[srcX][srcY]->CheckMovePiece(srcX, srcY, dstX, dstY, *this))
+	if (!board[srcX][srcY]->CheckMovePiece(srcX, srcY, dstX, dstY, *this)) //check the move of each Piece
 	{
 		returnString = "6";
 		return returnString;

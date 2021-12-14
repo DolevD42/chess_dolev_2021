@@ -18,11 +18,11 @@ Rook::~Rook()
 bool Rook::CheckMovePiece(const int srcX, const int srcY, const int dstX, const int dstY, Board board)
 {
 	int i = 0;
-	if (dstX != srcX && dstY != srcY)
+	if (dstX != srcX && dstY != srcY) //check if the piece is the same row or collumm
 	{
 		return false;
 	}
-	if (dstX > srcX)
+	if (dstX > srcX) 
 	{
 		for (i = srcX + 1; i < dstX; i++)
 		{
@@ -63,5 +63,5 @@ bool Rook::CheckMovePiece(const int srcX, const int srcY, const int dstX, const 
 		}
 	}
 
-	return true;
+	return true; //return true if its work
 }
