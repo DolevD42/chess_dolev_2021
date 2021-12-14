@@ -120,7 +120,7 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 						{
 							if (board[k][j])
 							{
-								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'K'))
+								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'k'))
 								{
 									returnValue = true;
 								}
@@ -134,7 +134,7 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 						{
 							if (board[k][j])
 							{
-								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'K'))
+								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'k'))
 								{
 									returnValue = true;
 								}
