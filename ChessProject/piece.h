@@ -1,7 +1,7 @@
 #pragma once
-#include "board.h"
-class board;
-
+#include "Board.h"
+class Board;
+#include <string>
 #include "stdafx.h"
 
 class Piece
@@ -12,10 +12,10 @@ protected:
 	int yAxis;
 	char symbol;
 public:
-	Piece(const int x, const int y, const int color);
+	Piece(const int x, const int y, const bool color);
 	~Piece();
-	virtual std::string movePiece(std::string STmovDS, Board& board) = 0;
-	std::string CheckMovesValidation(const int srcX, const int srcY, const int dstX, const int dstY, Board& board);
+	virtual bool CheckMovePiece(const int srcX, const int srcY, const int dstX, const int dstY, Board board) = 0;
+	std::string CheckMovesValidation(const int srcX, const int srcY, const int dstX, const int dstY, Board board);
 	char getSymbol() const;
 	int getX() const;
 	int getY() const;

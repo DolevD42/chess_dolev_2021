@@ -1,9 +1,12 @@
 #pragma once
+
 #include "piece.h"
+#include <string>
+
 class Rook : public Piece
 {
 public:
-	Rook(const int x, const int y, const int color);
+	Rook(const int x, const int y, const bool color);
 	~Rook();
-	std::string movePiece(std::string mov, Board& board);
+	virtual bool CheckMovePiece(const int srcX, const int srcY, const int dstX, const int dstY, Board board);
 };
