@@ -5,6 +5,10 @@ in order to read and write information from and to the Backend
 */
 
 #include "Pipe.h"
+#include "board.h"
+#include "piece.h"
+#include "Rook.h"
+#include "King.h"
 #include <iostream>
 #include <thread>
 
@@ -15,7 +19,51 @@ using std::string;
 
 void main()
 {
-	srand(time_t(NULL));
+	std::string move = "";
+	std::string code = "";
+	Board b = Board();
+	b.printBoard();
+	Rook rookW1 = Rook(0, 0, true);
+	b.setSpecificPiece(0, 0 , &rookW1);
+	Rook rookW2 = Rook(7, 0, true);
+	b.setSpecificPiece(7, 0, &rookW2);
+	Rook rookB1 = Rook(0, 7, false);
+	b.setSpecificPiece(0, 7, &rookB1);
+	Rook rookB2 = Rook(7, 7, false);
+	b.setSpecificPiece(7, 7, &rookB2);
+
+	King kingW = King(3, 0, true);
+	b.setSpecificPiece(3, 0, &kingW);
+	King kingB = King(3, 7, false);
+	b.setSpecificPiece(3, 7, &kingB);
+	std::cout<< " " <<std::endl;
+	b.printBoard();
+	
+	while (true)
+	{
+		std::cout << "Whats Your move? ";
+		std::cin >> move;
+		code = b.movePieceOnBoard(move);
+		if (code[0] == '0' || code[0] == '1')
+		{
+			if (code[0] == '1')
+			{
+				std::cout << "There is a check!" << std::endl;
+			}
+			b.printBoard();
+			b.changeTurn();
+		}
+		else
+		{
+			std::cout << "Your move is not valid and his code is ";
+			std::cout << code[0] << std::endl;
+		}
+		
+	}
+
+	
+
+	/*srand(time_t(NULL));
 
 
 	Pipe p;
@@ -61,11 +109,11 @@ void main()
 		// YOUR CODE
 		strcpy_s(msgToGraphics, "YOUR CODE"); // msgToGraphics should contain the result of the operation
 
-		/******* JUST FOR EREZ DEBUGGING ******/
+		// JUST FOR EREZ DEBUGGING
 		int r = rand() % 10; // just for debugging......
 		msgToGraphics[0] = (char)(1 + '0');
 		msgToGraphics[1] = 0;
-		/******* JUST FOR EREZ DEBUGGING ******/
+		// JUST FOR EREZ DEBUGGING
 
 
 		// return result to graphics		
@@ -75,5 +123,5 @@ void main()
 		msgFromGraphics = p.getMessageFromGraphics();
 	}
 
-	p.close();
+	p.close();*/
 }
