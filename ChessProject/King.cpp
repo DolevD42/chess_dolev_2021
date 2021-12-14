@@ -26,9 +26,8 @@ bool King::CheckMovePiece(const int srcX, const int srcY, const int dstX, const 
 			{ // if its not the king
 				continue;
 			}
-			else if (((srcX + x) == dstX) && ((srcY + y) == dstY) && // if its the position were looking for
-				(board.getSpecificPiece(dstX, dstY) == nullptr || board.getSpecificPiece(dstX, dstY)->getColor() != board.getSpecificPiece(srcX, srcY)->getColor()))
-			{ // and its not the same color
+			else if ((srcX+x) == dstX && (srcY+y) == dstY)
+			{ 
 				return true;
 			}
 		}
