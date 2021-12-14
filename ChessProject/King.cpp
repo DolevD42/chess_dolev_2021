@@ -3,7 +3,7 @@
 King::King(const int x, const int y, const bool color) : Piece(x, y, color)
 {
 	if (color)
-	{
+	{//checking for a white or a black because colors are bool
 		symbol = 'K';
 	}
 	else
@@ -27,7 +27,7 @@ bool King::CheckMovePiece(const int srcX, const int srcY, const int dstX, const 
 				continue;
 			}
 			else if ((srcX+x) == dstX && (srcY+y) == dstY)
-			{ 
+			{
 				return true;
 			}
 		}

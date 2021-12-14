@@ -20,18 +20,18 @@ std::string Piece::CheckMovesValidation(const int srcX, const int srcY, const in
 {
    
     if (board.getTurn() != board.getSpecificPiece(srcX, srcY)->getColor())
-    {
+    {//checking if we had piece of the player in the board src point
         return "2";
     }
     if (board.getSpecificPiece(dstX, dstY))
-    {
+    {//checking for a spot at the dst that have player in it
         if (board.getSpecificPiece(dstX, dstY)->getColor() == board.getTurn())
-        {
+        {//checking for the same player color at the dst point
             return "3";
         }
     }
     if (srcX == dstX && srcY == dstY)
-    {
+    {//if the dst and the src points are the same
         return "7";
     }
     return "n"; //return n if the function didn't find any mistakes
