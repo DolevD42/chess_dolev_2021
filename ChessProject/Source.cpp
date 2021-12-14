@@ -47,7 +47,11 @@ void main()
 		{
 			if (code[0] == '1')
 			{
-				std::cout << "There is a check!" << std::endl;
+				std::cout << "There is a check! (code 1)" << std::endl;
+			}
+			else
+			{
+				std::cout << "code 0" << std::endl;
 			}
 			b.printBoard();
 			b.changeTurn();
