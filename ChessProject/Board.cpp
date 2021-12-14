@@ -175,8 +175,27 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 					}
 					if (board[i][j]->getSymbol() == 'k' || board[i][j]->getSymbol() == 'K')
 					{
-						
-						
+						for (int x = -1; x < 2; x++)
+						{
+							for (int y = -1; y < 2; y++)
+							{
+								if ((x == 0) && (y == 0))
+								{ // if its not the king
+									continue;
+								}
+								if ((i + x) >= BOARD_SIZE || (i + x) < 0 || (j + y) >= BOARD_SIZE || (j + y) < 0)
+								{
+									continue;
+								}
+								else if (board[i+x][j+y])
+								{
+									if (board[i + x][j + y]->getColor() == whoToCheck && (board[i + x][j + y]->getSymbol() == 'k' || board[i + x][j + y]->getSymbol() == 'K'))
+									{
+										returnValue = true;
+									}
+								}
+							}
+						}
 					}
 				}
 			}
