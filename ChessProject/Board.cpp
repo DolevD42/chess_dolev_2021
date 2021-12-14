@@ -175,21 +175,8 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 					}
 					if (board[i][j]->getSymbol() == 'K' || board[i][j]->getSymbol() == 'K')
 					{
-						std::vector<char>* temp = new std::vector<char>;
-
-						// loop for 3 sides for 3 possible moves
-						for (int x = -1; x < 2; x++) 
-						{
-							for (int y = -1; y < 2; y++)
-							{
-								if (srcX + x >= 0 && dstX + x < BOARD_SIZE && srcY + y >= 0 && dstY + y < BOARD_SIZE)
-								{
-									
-								}
-							}
-						}
-
-						return temp;
+						
+						
 					}
 				}
 			}
