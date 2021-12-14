@@ -22,7 +22,6 @@ void main()
 	std::string move = "";
 	std::string code = "";
 	Board b = Board();
-	b.printBoard();
 	Rook rookW1 = Rook(0, 0, true);
 	b.setSpecificPiece(0, 0 , &rookW1);
 	Rook rookW2 = Rook(7, 0, true);
@@ -61,9 +60,8 @@ void main()
 		
 	}
 
-	
-
-	/*srand(time_t(NULL));
+	/*
+	srand(time_t(NULL));
 
 
 	Pipe p;
@@ -89,13 +87,19 @@ void main()
 		}
 	}
 
-
+	
 	char msgToGraphics[1024];
 	// msgToGraphics should contain the board string accord the protocol
 	// YOUR CODE
-
+	std::string boardStr = b.getBoardString();
+	boardStr = boardStr += "0";
+	
 	strcpy_s(msgToGraphics, "rnbkqbnrpppppppp################################PPPPPPPPRNBKQBNR1"); // just example...
-
+	int i = 0;
+	for (i = 0; i < 65; i++)
+	{
+		msgToGraphics[i] = boardStr[i];
+	}
 	p.sendMessageToGraphics(msgToGraphics);   // send the board string
 
 	// get message from graphics
@@ -105,9 +109,10 @@ void main()
 	{
 		// should handle the string the sent from graphics
 		// according the protocol. Ex: e2e4           (move e2 to e4)
-
-		// YOUR CODE
+		
 		strcpy_s(msgToGraphics, "YOUR CODE"); // msgToGraphics should contain the result of the operation
+		
+		
 
 		// JUST FOR EREZ DEBUGGING
 		int r = rand() % 10; // just for debugging......
@@ -115,13 +120,23 @@ void main()
 		msgToGraphics[1] = 0;
 		// JUST FOR EREZ DEBUGGING
 
-
+		code = b.movePieceOnBoard(msgFromGraphics);
+		msgToGraphics[0] = code[0];
+		msgToGraphics[1] = NULL;
 		// return result to graphics		
 		p.sendMessageToGraphics(msgToGraphics);
-
+		if (code[0] == '0' || code[0] == '1')
+		{
+			if (code[0] == '1')
+			{
+				std::cout << "There is a check!" << std::endl;
+			}
+			b.printBoard();
+			b.changeTurn();
+		}
 		// get message from graphics
 		msgFromGraphics = p.getMessageFromGraphics();
 	}
 
-	p.close();*/
+	p.close(); */
 }
