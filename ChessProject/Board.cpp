@@ -92,6 +92,8 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 	board[srcX][srcY] = NULL;
 	int i = 0;
 	int j = 0;
+	int k = 0;
+	int y = 0;
 	for (i = 0; i < BOARD_SIZE; i++)
 	{
 		for (j = 0; j < BOARD_SIZE; j++)
@@ -100,9 +102,29 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 			{
 				if (board[i][j]->getColor() != whoToCheck) //check if the panel is the oppsite color
 				{
+					if (board[i][j]->getSymbol() == 'N' || board[i][j]->getSymbol() == 'n')
+					{
+						for (k = i - 2; k <= i + 2; k++)
+						{
+							for (y = j - 2; y <= j + 2; y++)
+							{
+								if ((i + k) >= BOARD_SIZE || (i + k) < 0 || (j + y) >= BOARD_SIZE || (j + y) < 0) //check that the number don't overflowd
+								{
+									continue;
+								}
+								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'k'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+					}
 					if (board[i][j]->getSymbol() == 'Q' || board[i][j]->getSymbol() == 'q')
 					{
-						int k = 0;
 						for (k = i + 1; k < BOARD_SIZE; k++)
 						{
 							if (board[k][j])
