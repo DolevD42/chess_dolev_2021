@@ -12,6 +12,7 @@ in order to read and write information from and to the Backend
 #include "Queen.h"
 #include "Knight.h"
 #include "Bishop.h"
+#include "Pawn.h"
 #include <iostream>
 #include <thread>
 
@@ -26,6 +27,41 @@ void main()
 	std::string move = "";
 	std::string code = "";
 	Board b = Board();
+
+	Pawn* PawnW1 = new Pawn(0, 1, true);
+	b.setSpecificPiece(0, 1, PawnW1);
+	Pawn* PawnW2 = new Pawn(1, 1, true);
+	b.setSpecificPiece(1, 1, PawnW2);
+	Pawn* PawnW3 = new Pawn(2, 1, true);
+	b.setSpecificPiece(2, 1, PawnW3);
+	Pawn* PawnW4 = new Pawn(3, 1, true);
+	b.setSpecificPiece(3, 1, PawnW4);
+	Pawn* PawnW5 = new Pawn(4, 1, true);
+	b.setSpecificPiece(4, 1, PawnW5);
+	Pawn* PawnW6 = new Pawn(5, 1, true);
+	b.setSpecificPiece(5, 1, PawnW6);
+	Pawn* PawnW7 = new Pawn(6, 1, true);
+	b.setSpecificPiece(6, 1, PawnW7);
+	Pawn* PawnW8 = new Pawn(7, 1, true);
+	b.setSpecificPiece(7, 1, PawnW8);
+
+	Pawn* PawnB1 = new Pawn(0, 6, false);
+	b.setSpecificPiece(0, 6, PawnB1);
+	Pawn* PawnB2 = new Pawn(1, 6, false);
+	b.setSpecificPiece(1, 6, PawnB2);
+	Pawn* PawnB3 = new Pawn(2, 6, false);
+	b.setSpecificPiece(2, 6, PawnB3);
+	Pawn* PawnB4 = new Pawn(3, 6, false);
+	b.setSpecificPiece(3, 6, PawnB4);
+	Pawn* PawnB5 = new Pawn(4, 6, false);
+	b.setSpecificPiece(4, 6, PawnB5);
+	Pawn* PawnB6 = new Pawn(5, 6, false);
+	b.setSpecificPiece(5, 6, PawnB6);
+	Pawn* PawnB7 = new Pawn(6, 6, false);
+	b.setSpecificPiece(6, 6, PawnB7);
+	Pawn* PawnB8 = new Pawn(7, 6, false);
+	b.setSpecificPiece(7, 6, PawnB8);
+
 	Bishop* BishopW1 = new Bishop(2, 0, true);
 	b.setSpecificPiece(2, 0, BishopW1);
 	Bishop* BishopW2 = new Bishop(5, 0, true);
@@ -57,8 +93,6 @@ void main()
 	b.setSpecificPiece(3, 0, kingW);
 	King* kingB = new King(3, 7, false);
 	b.setSpecificPiece(3, 7, kingB);
-	std::cout<< " " <<std::endl;
-	b.printBoard();
 	
 	Queen* QueenW = new Queen(4, 0, true);
 	b.setSpecificPiece(4, 0, QueenW);
