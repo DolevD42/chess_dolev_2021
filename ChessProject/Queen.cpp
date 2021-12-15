@@ -68,7 +68,7 @@ bool Queen::CheckMovePiece(const int srcX, const int srcY, const int dstX, const
 		{
 			for (i = 1; i + srcX < dstX; i++)
 			{
-				if (board.getSpecificPiece(srcX + i, srcY+i)) //check if there is any one between the queen and the bishop
+				if (board.getSpecificPiece(srcX + i, srcY+i)) //check if there is any one between the queen and the place
 				{
 					return false;
 				}
