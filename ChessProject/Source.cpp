@@ -11,6 +11,7 @@ in order to read and write information from and to the Backend
 #include "King.h"
 #include "Queen.h"
 #include "Knight.h"
+#include "Bishop.h"
 #include <iostream>
 #include <thread>
 
@@ -25,6 +26,15 @@ void main()
 	std::string move = "";
 	std::string code = "";
 	Board b = Board();
+	Bishop* BishopW1 = new Bishop(2, 0, true);
+	b.setSpecificPiece(2, 0, BishopW1);
+	Bishop* BishopW2 = new Bishop(5, 0, true);
+	b.setSpecificPiece(5, 0, BishopW2);
+	Bishop* BishopB1 = new Bishop(2, 7, false);
+	b.setSpecificPiece(2, 7, BishopB1);
+	Bishop* BishopB2 = new Bishop(5, 7, false);
+	b.setSpecificPiece(5, 7, BishopB2);
+
 	Knight* KnightW1 = new Knight(1, 0, true);
 	b.setSpecificPiece(1, 0, KnightW1);
 	Knight* KnightW2 = new Knight(6, 0, true);
