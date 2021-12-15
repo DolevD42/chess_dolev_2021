@@ -4,11 +4,11 @@ Knight::Knight(const int& x, const int& y, const int& color) : Piece(x, y, color
 {
 	if (color)
 	{//checking for a white or a black because colors are bool
-		symbol = 'K';
+		symbol = 'N';
 	}
 	else
 	{
-		symbol = 'k';
+		symbol = 'n';
 	}
 }
 
