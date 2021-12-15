@@ -9,6 +9,7 @@ in order to read and write information from and to the Backend
 #include "piece.h"
 #include "Rook.h"
 #include "King.h"
+#include "Queen.h"
 #include <iostream>
 #include <thread>
 
@@ -36,6 +37,13 @@ void main()
 	King* kingB = new King(3, 7, false);
 	b.setSpecificPiece(3, 7, kingB);
 	std::cout<< " " <<std::endl;
+	b.printBoard();
+	
+	Queen* QueenW = new Queen(4, 0, true);
+	b.setSpecificPiece(4, 0, QueenW);
+	Queen* QueenB = new Queen(4, 7, false);
+	b.setSpecificPiece(4, 7, QueenB);
+	std::cout << " " << std::endl;
 	b.printBoard();
 	
 	while (true)
