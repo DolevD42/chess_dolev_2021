@@ -93,6 +93,7 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 	int i = 0;
 	int j = 0;
 	int k = 0;
+	int x = 0;
 	int y = 0;
 	for (i = 0; i < BOARD_SIZE; i++)
 	{
@@ -104,21 +105,20 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 				{
 					if (board[i][j]->getSymbol() == 'N' || board[i][j]->getSymbol() == 'n')
 					{
-						for (k = i - 2; k <= i + 2; k++)
+						for (x = -2 ; x <= 2; x++)
 						{
-							for (y = j - 2; y <= j + 2; y++)
+							for (y = -2; y <= 2; y++)
 							{
-								if ((i + k) >= BOARD_SIZE || (i + k) < 0 || (j + y) >= BOARD_SIZE || (j + y) < 0) //check that the number don't overflowd
+								if ((i+x) >= BOARD_SIZE || (i + x) < 0 || (j + y) >= BOARD_SIZE || (j + y) < 0 || (abs(x)+abs(y))!= 3) //check that the number don't overflowd, and that its a valid knight move
 								{
 									continue;
 								}
-								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'k'))
+								if (board[i + x][j + y])
 								{
-									returnValue = true;
-								}
-								else
-								{
-									break;
+									if (board[i+x][j+y]->getColor() == whoToCheck && (board[i+x][j+y]->getSymbol() == 'K' || board[i+x][j+y]->getSymbol() == 'k'))
+									{
+										returnValue = true;
+									}
 								}
 							}
 						}
