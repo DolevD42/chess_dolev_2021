@@ -10,8 +10,10 @@ in order to read and write information from and to the Backend
 #include "Rook.h"
 #include "King.h"
 #include "Queen.h"
+#include "Knight.h"
 #include <iostream>
 #include <thread>
+
 
 using std::cout;
 using std::endl;
@@ -23,6 +25,15 @@ void main()
 	std::string move = "";
 	std::string code = "";
 	Board b = Board();
+	Knight* KnightW1 = new Knight(1, 0, true);
+	b.setSpecificPiece(1, 0, KnightW1);
+	Knight* KnightW2 = new Knight(6, 0, true);
+	b.setSpecificPiece(6, 0, KnightW2);
+	Knight* KnightB1 = new Knight(1, 7, false);
+	b.setSpecificPiece(1, 7, KnightB1);
+	Knight* KnightB2 = new Knight(6, 7, false);
+	b.setSpecificPiece(6, 7, KnightB2);
+
 	Rook* rookW1 = new Rook(0, 0, true);
 	b.setSpecificPiece(0, 0 , rookW1);
 	Rook* rookW2 = new Rook(7, 0, true);
@@ -45,7 +56,7 @@ void main()
 	b.setSpecificPiece(4, 7, QueenB);
 	std::cout << " " << std::endl;
 	b.printBoard();
-	
+	/*
 	while (true)
 	{
 		std::cout << "Whats Your move? ";
@@ -72,7 +83,7 @@ void main()
 		
 	}
 	
-	/*
+	*/
 	srand(time_t(NULL));
 
 
@@ -150,5 +161,5 @@ void main()
 		msgFromGraphics = p.getMessageFromGraphics();
 	}
 	
-	p.close();*/
+	p.close();
 }
