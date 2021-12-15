@@ -103,6 +103,55 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 			{
 				if (board[i][j]->getColor() != whoToCheck) //check if the panel is the oppsite color
 				{
+					if (board[i][j]->getSymbol() == 'P' || board[i][j]->getSymbol() == 'p')
+					{
+						if (board[i][j]->getColor()) //there is 2 different checks, depends the color of the pawn
+						{
+							if ((i + 1) < BOARD_SIZE && (i + 1) >= 0 && (j + 1) <  BOARD_SIZE && (j + 1) >= 0)
+							{
+								if (board[i + 1][j + 1])
+								{
+									if (board[i + 1][j + 1]->getColor() == whoToCheck && (board[i + 1][j + 1]->getSymbol() == 'K' || board[i + 1][j + 1]->getSymbol() == 'k'))
+									{
+										returnValue = true;
+									}
+								}
+							}
+							if ((i - 1) < BOARD_SIZE && (i - 1) >= 0 && (j + 1) < BOARD_SIZE && (j + 1) >= 0)
+							{
+								if (board[i - 1][j + 1])
+								{
+									if (board[i - 1][j + 1]->getColor() == whoToCheck && (board[i - 1][j + 1]->getSymbol() == 'K' || board[i - 1][j + 1]->getSymbol() == 'k'))
+									{
+										returnValue = true;
+									}
+								}
+							}
+						}
+						else //for each color, its check the 2 spots that the pawn threating on them
+						{
+							if ((i + 1) < BOARD_SIZE && (i + 1) >= 0 && (j - 1) < BOARD_SIZE && (j - 1) >= 0)
+							{
+								if (board[i + 1][j - 1])
+								{
+									if (board[i + 1][j - 1]->getColor() == whoToCheck && (board[i + 1][j - 1]->getSymbol() == 'K' || board[i + 1][j - 1]->getSymbol() == 'k'))
+									{
+										returnValue = true;
+									}
+								}
+							}
+							if ((i - 1) < BOARD_SIZE && (i - 1) >= 0 && (j - 1) < BOARD_SIZE && (j - 1) >= 0)
+							{
+								if (board[i - 1][j - 1])
+								{
+									if (board[i - 1][j - 1]->getColor() == whoToCheck && (board[i - 1][j - 1]->getSymbol() == 'K' || board[i - 1][j - 1]->getSymbol() == 'k'))
+									{
+										returnValue = true;
+									}
+								}
+							}
+						}
+					}
 					if (board[i][j]->getSymbol() == 'B' || board[i][j]->getSymbol() == 'b')
 					{
 						for (k = 1; i + k < BOARD_SIZE && j + k < BOARD_SIZE; k++)
