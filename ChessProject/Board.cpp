@@ -29,9 +29,9 @@ Piece* Board::getSpecificPiece(int const x, int const y)
 
 void Board::setSpecificPiece(int const x, int const y, Piece* p)
 {
-	if (board[x][y])
+	if (board[x][y] && p)
 	{
-		//delete the peace
+		delete board[x][y];
 	}
 	board[x][y] = p;
 }
