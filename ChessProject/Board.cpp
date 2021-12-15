@@ -100,7 +100,122 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 			{
 				if (board[i][j]->getColor() != whoToCheck) //check if the panel is the oppsite color
 				{
-					//place for more tools to check
+					if (board[i][j]->getSymbol() == 'Q' || board[i][j]->getSymbol() == 'q')
+					{
+						int k = 0;
+						for (k = i + 1; k < BOARD_SIZE; k++)
+						{
+							if (board[k][j])
+							{
+								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'k'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = i - 1; k >= 0; k--)
+						{
+							if (board[k][j])
+							{
+								if (board[k][j]->getColor() == whoToCheck && (board[k][j]->getSymbol() == 'K' || board[k][j]->getSymbol() == 'k'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = j + 1; k < BOARD_SIZE; k++)
+						{
+							if (board[i][k])
+							{
+								if (board[i][k]->getColor() == whoToCheck && (board[i][k]->getSymbol() == 'k' || board[i][k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = j - 1; k >= 0; k--)
+						{
+							if (board[i][k])
+							{
+								if (board[i][k]->getColor() == whoToCheck && (board[i][k]->getSymbol() == 'k' || board[i][k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = 1; i + k < BOARD_SIZE && j + k < BOARD_SIZE; k++)
+						{
+							if (board[i + k][j + k])
+							{
+								if (board[i + k][j + k]->getColor() == whoToCheck && (board[i + k][j + k]->getSymbol() == 'k' || board[i + k][j + k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = 1; i + k < BOARD_SIZE && j - k >= 0; k++)
+						{
+							if (board[i + k][j - k])
+							{
+								if (board[i + k][j - k]->getColor() == whoToCheck && (board[i + k][j - k]->getSymbol() == 'k' || board[i + k][j - k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = 1; i - k >= 0 && j + k < BOARD_SIZE; k++)
+						{
+							if (board[i - k][j + k])
+							{
+								if (board[i - k][j + k]->getColor() == whoToCheck && (board[i - k][j + k]->getSymbol() == 'k' || board[i - k][j + k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = 1; i - k >= 0 && j - k >= 0; k++)
+						{
+							if (board[i - k][j - k])
+							{
+								if (board[i - k][j - k]->getColor() == whoToCheck && (board[i - k][j - k]->getSymbol() == 'k' || board[i - k][j - k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+					}
 					if (board[i][j]->getSymbol() == 'R' || board[i][j]->getSymbol() == 'r')
 					{
 						int k = 0;
