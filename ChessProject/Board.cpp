@@ -233,7 +233,7 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 								}
 							}
 						}
-						for (k = i - 1; k > 0; k--)
+						for (k = i - 1; k >= 0; k--)
 						{
 							if (board[k][j])
 							{
@@ -261,7 +261,7 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 								}
 							}
 						}
-						for (k = j - 1; k > 0; k--)
+						for (k = j - 1; k >= 0; k--)
 						{
 							if (board[i][k])
 							{
