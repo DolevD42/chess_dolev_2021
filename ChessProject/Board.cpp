@@ -103,6 +103,65 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 			{
 				if (board[i][j]->getColor() != whoToCheck) //check if the panel is the oppsite color
 				{
+					if (board[i][j]->getSymbol() == 'B' || board[i][j]->getSymbol() == 'b')
+					{
+						for (k = 1; i + k < BOARD_SIZE && j + k < BOARD_SIZE; k++)
+						{
+							if (board[i + k][j + k])
+							{
+								if (board[i + k][j + k]->getColor() == whoToCheck && (board[i + k][j + k]->getSymbol() == 'k' || board[i + k][j + k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = 1; i + k < BOARD_SIZE && j - k >= 0; k++)
+						{
+							if (board[i + k][j - k])
+							{
+								if (board[i + k][j - k]->getColor() == whoToCheck && (board[i + k][j - k]->getSymbol() == 'k' || board[i + k][j - k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = 1; i - k >= 0 && j + k < BOARD_SIZE; k++)
+						{
+							if (board[i - k][j + k])
+							{
+								if (board[i - k][j + k]->getColor() == whoToCheck && (board[i - k][j + k]->getSymbol() == 'k' || board[i - k][j + k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+						for (k = 1; i - k >= 0 && j - k >= 0; k++)
+						{
+							if (board[i - k][j - k])
+							{
+								if (board[i - k][j - k]->getColor() == whoToCheck && (board[i - k][j - k]->getSymbol() == 'k' || board[i - k][j - k]->getSymbol() == 'K'))
+								{
+									returnValue = true;
+								}
+								else
+								{
+									break;
+								}
+							}
+						}
+					}
 					if (board[i][j]->getSymbol() == 'N' || board[i][j]->getSymbol() == 'n')
 					{
 						for (x = -2 ; x <= 2; x++)
