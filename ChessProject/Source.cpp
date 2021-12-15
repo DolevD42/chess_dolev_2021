@@ -22,19 +22,19 @@ void main()
 	std::string move = "";
 	std::string code = "";
 	Board b = Board();
-	Rook rookW1 = Rook(0, 0, true);
-	b.setSpecificPiece(0, 0 , &rookW1);
-	Rook rookW2 = Rook(7, 0, true);
-	b.setSpecificPiece(7, 0, &rookW2);
-	Rook rookB1 = Rook(0, 7, false);
-	b.setSpecificPiece(0, 7, &rookB1);
-	Rook rookB2 = Rook(7, 7, false);
-	b.setSpecificPiece(7, 7, &rookB2);
+	Rook* rookW1 = new Rook(0, 0, true);
+	b.setSpecificPiece(0, 0 , rookW1);
+	Rook* rookW2 = new Rook(7, 0, true);
+	b.setSpecificPiece(7, 0, rookW2);
+	Rook* rookB1 = new Rook(0, 7, false);
+	b.setSpecificPiece(0, 7, rookB1);
+	Rook* rookB2 = new Rook(7, 7, false);
+	b.setSpecificPiece(7, 7, rookB2);
 
-	King kingW = King(3, 0, true);
-	b.setSpecificPiece(3, 0, &kingW);
-	King kingB = King(3, 7, false);
-	b.setSpecificPiece(3, 7, &kingB);
+	King* kingW = new King(3, 0, true);
+	b.setSpecificPiece(3, 0, kingW);
+	King* kingB = new King(3, 7, false);
+	b.setSpecificPiece(3, 7, kingB);
 	std::cout<< " " <<std::endl;
 	b.printBoard();
 	
