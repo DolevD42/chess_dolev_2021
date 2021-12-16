@@ -438,7 +438,7 @@ bool Board::checkForCheck(bool const whoToCheck, int const srcX, int const srcY,
 	{
 		if (temp)
 		{
-			//delete temp;
+			delete temp;
 		}
 		board[dstX][dstY]->setPose(dstX, dstY);
 	}
